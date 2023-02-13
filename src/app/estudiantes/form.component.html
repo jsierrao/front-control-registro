@@ -1,0 +1,87 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo}}</div>
+    <div class="card-body">
+     <form >
+        
+      <div class="form-group row">
+         <label for="primerNombre" class="col-form-label col-sm-2">Primer Nombre</label>
+         <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="estudiante.primerNombre" name="primerNombre">
+         </div>
+        </div>
+           <div class="form-group row">
+            <label for="segundoNombre" class="col-form-label col-sm-2">Segundo Nombre</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoNombre" name="segundoNombre">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="primerApellido" class="col-form-label col-sm-2">Primer Apellido</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.primerApellido" name="primerApellido">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="segundoApellido" class="col-form-label col-sm-2">Segundo Apellido</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoApellido"name="segundoApellido">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.tipoDocumento"name="tipoDocumento">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="numeroDocumento" class="col-form-label col-sm-2">Numero Documento</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.numeroDocumento"name="numeroDocumento">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="curso" class="col-form-label col-sm-2">Curso</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.curso"name="curso">
+            </div>
+           </div>
+
+           <div class="form-group row">
+            <label for="estado" class="col-form-label col-sm-2">Estado</label>
+            <div class="col-sm-6">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.estado"name="estado">
+            </div>
+           </div>
+
+          
+
+
+           
+
+           <div class="form-group row">
+            <div class="col-sm-6">
+   <button class="btn btn-primary" role="button"(click)="create()"  *ngIf="!estudiante.id else elseBlock" >Crear</button>
+
+                <ng-template #elseBlock >
+                  <button class="btn btn-primary" role="button"(click)="update()" >Editar</button>
+                </ng-template>
+            </div>
+
+           </div>
+
+
+
+
+
+     </form>
+
+
+
+
+    </div>
+</div>
