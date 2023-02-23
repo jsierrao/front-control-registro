@@ -11,8 +11,10 @@ import {map} from 'rxjs/operators';
 export class EstudianteService {
   private urllista = "http://localhost:9095/estudianteslistar";
   private urlcrear = "http://localhost:9095/estudiantesregistro";
-  private urleditar = "http://localhost:9095/listarId";
+  private urleditar = "http://localhost:9095/estudiantes";
   private urlinitialform = "http://localhost:9095/estudiantesconsulta"
+  private urlporid = "http://localhost:9095/estudiantesporid"
+  private urleliminar = "http://localhost:9095/eliminar"
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
  
 
@@ -29,11 +31,19 @@ export class EstudianteService {
 
 
   getEstudiante(id: any): Observable<Estudiante>{
-    return this.http.get<Estudiante>(`${this.urleditar}${id}`);
+    return this.http.get<Estudiante>(`${this.urlporid}/${id}`);
+  }
+
+  getListasFor(): Observable<Estudiante>{
+    return this.http.get<Estudiante>(this.urlinitialform)
   }
 
   update(estudiante:Estudiante): Observable<Estudiante>{
-    return this.http.put<Estudiante>(`${this.urleditar}${estudiante.id}`, estudiante,{headers: this.httpHeaders})
+    return this.http.put<Estudiante>(`${this.urleditar}/${estudiante.id}`, estudiante,{headers: this.httpHeaders})
+  }
+
+  delete(id:number): Observable<Estudiante>{
+    return this.http.delete<Estudiante>(`${this.urleliminar}/${id}`,{headers: this.httpHeaders})
   }
  
 

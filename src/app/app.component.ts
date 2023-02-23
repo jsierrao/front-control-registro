@@ -11,4 +11,5 @@ export class AppComponent {
   ubicacion = 'Malambo - Atlantico';
   barrio = 'Centro';
 
+  
 }

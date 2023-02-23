@@ -1,87 +1,123 @@
 <div class="card bg-dark text-white">
-    <div class="card-header">{{ titulo}}</div>
-    <div class="card-body">
-     <form >
-        
-      <div class="form-group row">
-         <label for="primerNombre" class="col-form-label col-sm-2">Primer Nombre</label>
-         <div class="col-sm-6">
-            <input type="text" class="form-control" [(ngModel)]="estudiante.primerNombre" name="primerNombre">
+   <div class="card-header">{{ titulo}}</div>
+   <div class="card-body">
+      <form  #botoncrear="ngForm">
+
+         <div class="form-group row">
+            <label for="primerNombre" class="col-form-label col-sm-2">Primer Nombre</label>
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.primerNombre" name="primerNombre" required #nombre="ngModel">
+               <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                  <div *ngIf="nombre.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
+            </div>
          </div>
-        </div>
-           <div class="form-group row">
+         <div class="form-group row">
             <label for="segundoNombre" class="col-form-label col-sm-2">Segundo Nombre</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoNombre" name="segundoNombre">
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoNombre" name="segundoNombre" required  #segundoNombre="ngModel">
+               <div class="alert alert-danger" *ngIf="segundoNombre.invalid && (segundoNombre.dirty || segundoNombre.touched)">
+                  <div *ngIf="segundoNombre.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
             </div>
-           </div>
+         </div>
 
-           <div class="form-group row">
+         <div class="form-group row">
             <label for="primerApellido" class="col-form-label col-sm-2">Primer Apellido</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.primerApellido" name="primerApellido">
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.primerApellido" name="primerApellido" required #primerapellido="ngModel">
+               <div class="alert alert-danger" *ngIf="primerapellido.invalid && (primerapellido.dirty || primerapellido.touched)">
+                  <div *ngIf="nombre.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
             </div>
-           </div>
+         </div>
 
-           <div class="form-group row">
+         <div class="form-group row">
             <label for="segundoApellido" class="col-form-label col-sm-2">Segundo Apellido</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoApellido"name="segundoApellido">
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.segundoApellido" name="segundoApellido" required #segundoapellido="ngModel">
+               <div class="alert alert-danger" *ngIf="segundoapellido.invalid && (segundoapellido.dirty || segundoapellido.touched)">
+                  <div *ngIf="segundoapellido.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
             </div>
-           </div>
+         </div>
 
-           <div class="form-group row">
-            <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.tipoDocumento"name="tipoDocumento">
-            </div>
-           </div>
 
-           <div class="form-group row">
+         <div class="text-align-right" >
+            <label for="Tipo  Documento" class="col-form-label col-sm-2">Tipo Documento</label>
+            <select class="col-form-label col-sm-2" class="bg-dark" style="text-align:center" id="select-menu"
+               [(ngModel)]="selectedDocument" class="bx--text-input" required name="actionSelection">
+               <option style="text-align:center;" *ngFor="let doc of documentos" [value]="doc.id">{{doc.name}}</option>
+               <div class="col-form-label col-sm-2" class="card bg-white text-black">
+                  <div class="col-sm-5" *ngIf="selectedDocument==1">
+                     <div>Cedula Ciudadania</div>
+                  </div>
+                  <div *ngIf="selectedDocument==2">
+                     <div>Registro Civil</div>
+                  </div>
+                  <div *ngIf="selectedDocument==3">
+                     <div>Tarejeta Identidad</div>
+                  </div>
+                  <div *ngIf="selectedDocument==4">
+                     <div>Pasaporte</div>
+                  </div>
+               </div>
+            </select>
+            
+         </div>
+
+
+
+         <div class="form-group row">
             <label for="numeroDocumento" class="col-form-label col-sm-2">Numero Documento</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.numeroDocumento"name="numeroDocumento">
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.numeroDocumento" name="numeroDocumento" required #docu="ngModel">
+               <div class="alert alert-danger" *ngIf="docu.invalid && (docu.dirty || docu.touched)">
+                  <div *ngIf="docu.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
             </div>
-           </div>
+         </div>
 
-           <div class="form-group row">
-            <label for="curso" class="col-form-label col-sm-2">Curso</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.curso"name="curso">
+         <div class="form-group row">
+            <label for="tipoDocumento" class="col-form-label col-sm-2">Curso</label>
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.curso" name="curso">
             </div>
-           </div>
+         </div>
 
-           <div class="form-group row">
+         <div class="form-group row">
             <label for="estado" class="col-form-label col-sm-2">Estado</label>
-            <div class="col-sm-6">
-               <input type="text" class="form-control" [(ngModel)]="estudiante.estado"name="estado">
+            <div class="col-sm-5">
+               <input type="text" class="form-control" [(ngModel)]="estudiante.estado" name="estado" required #estado="ngModel">
+               <div class="alert alert-danger" *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+                  <div *ngIf="estado.errors">
+                    el campo es obligatorio
+                  </div>
+               </div>
+               
             </div>
-           </div>
+         </div>
 
-          
+         <div class="form-group row">
+            <div class="col-sm-5">
+    <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!estudiante.id else elseBlock" [disabled]="!botoncrear.form.valid">Crear</button>
 
-
-           
-
-           <div class="form-group row">
-            <div class="col-sm-6">
-   <button class="btn btn-primary" role="button"(click)="create()"  *ngIf="!estudiante.id else elseBlock" >Crear</button>
-
-                <ng-template #elseBlock >
-                  <button class="btn btn-primary" role="button"(click)="update()" >Editar</button>
-                </ng-template>
+               <ng-template #elseBlock>
+                  <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!botoncrear.form.valid">Editar</button>
+               </ng-template>
             </div>
 
-           </div>
-
-
-
-
-
-     </form>
-
-
-
-
-    </div>
+         </div>
+      </form>
+   </div>
 </div>
